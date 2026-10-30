@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Credentials (never commit real e-mails or passwords)
+.env
+.env.*
+!.env.example
+playwright/.auth/
+
+# Playwright output
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.playwright/
+.playwright-cli/
+.playwright-mcp/
+
+# Logs and OS / IDE files
+*.log
+.DS_Store
+.idea/
+*.swp

@@ -1,0 +1,42 @@
+name: Manual runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_name:
+        description: 'Name of scenario being executed (e.g., Add to cart from wishlist)'
+        required: true
+        type: string
+      number_of_runs:
+        description: 'Number of times to run the test'
+        required: true
+        type: string
+        default: "1"
+    
+jobs:
+  manual-runner:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    env:
+      US_EMAIL: ${{ secrets.US_EMAIL }}
+      US_PASSWORD: ${{ secrets.US_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: |
+          npx playwright test -g "${{ github.event.inputs.test_name }}" --repeat-each ${{ github.event.inputs.number_of_runs }}
+      # Report upload is disabled on purpose: in a public repository anyone can download
+      # workflow artifacts, and Playwright traces/videos record the typed credentials.
+      # - uses: actions/upload-artifact@v4
+      #   if: ${{ !cancelled() }}
+      #   with:
+      #     name: playwright-report
+      #     path: playwright-report/
+      #     retention-days: 2

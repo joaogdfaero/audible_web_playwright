@@ -1,0 +1,126 @@
+📋 Lista de Cenários de Teste – Audible
+🔐 Autenticação e Conta
+
+Login com credenciais válidas → validar acesso à conta.
+
+Login com credenciais inválidas → validar mensagem de erro.
+
+Logout → garantir que o usuário sai da sessão corretamente.
+
+Cadastro de novo usuário → validar criação de conta.
+
+Recuperação de senha → validar fluxo de esqueci minha senha.
+
+🔎 Busca e Descoberta
+
+Busca por título válido → retornar resultados relacionados.
+
+Busca por autor válido → retornar audiolivros do autor.
+
+Busca por palavra inexistente → validar mensagem de "nenhum resultado encontrado".
+
+Filtrar resultados (ex: duração, idioma, categoria) → garantir aplicação correta do filtro.
+
+Ordenar resultados (ex: mais relevantes, mais vendidos) → validar ordenação.
+
+📚 Catálogo e Detalhes
+
+Acessar página de detalhes de um livro → validar exibição de título, autor, narrador, sinopse.
+
+Adicionar livro à lista de desejos → validar persistência na conta.
+
+Adicionar livro à biblioteca → validar inclusão correta.
+
+Remover livro da lista de desejos → validar remoção.
+
+🛒 Compra e Assinatura
+
+Assinar plano mensal → validar fluxo de assinatura.
+
+Comprar um audiolivro com créditos → validar que crédito é descontado.
+
+Comprar um audiolivro com cartão → validar fluxo de pagamento.
+
+Cancelar assinatura → validar confirmação e bloqueio de benefícios.
+
+Gerenciar forma de pagamento → validar adição/remoção de cartões.
+
+🎧 Player e Experiência de Audição
+
+Iniciar reprodução de um audiolivro → validar que o player abre.
+
+Pausar e retomar reprodução → validar funcionamento.
+
+Alterar velocidade de reprodução → validar mudança efetiva.
+
+Navegar entre capítulos → validar que capítulos mudam corretamente.
+
+Adicionar marcador/bookmark → validar criação e persistência.
+
+⚙️ Conta e Configurações
+
+Alterar idioma do site → validar mudança de idioma.
+
+Alterar preferências de notificação → validar persistência da configuração.
+
+Visualizar histórico de compras → validar que itens aparecem corretamente.
+
+📱 Responsividade e Cross-browser
+
+Abrir site no modo mobile (iPhone/Android) → validar responsividade.
+
+Testar em navegadores diferentes (Chrome, Edge, Firefox, Safari) → validar compatibilidade.
+
+🔒 Segurança e Acessibilidade
+
+Acesso sem login a páginas restritas (ex: biblioteca) → validar redirecionamento para login.
+
+Timeout de sessão → validar logout automático após inatividade.
+
+Acessibilidade básica (atalhos, labels em botões, contraste) → validar que elementos cumprem padrões.
+
+
+playwright-tests/
+│
+├── tests/                      # Onde ficam os testes
+│   ├── auth/                   # Testes de autenticação
+│   │   └── login.spec.ts
+│   │   └── signup.spec.ts
+│   │
+│   ├── search/                 # Testes de busca
+│   │   └── search.spec.ts
+│   │
+│   ├── catalog/                # Testes de catálogo e detalhes
+│   │   └── bookDetails.spec.ts
+│   │
+│   ├── checkout/               # Testes de compra/assinatura
+│   │   └── subscription.spec.ts
+│   │   └── purchase.spec.ts
+│   │
+│   ├── player/                 # Testes do player
+│   │   └── player.spec.ts
+│   │
+│   ├── account/                # Testes de conta/configurações
+│   │   └── accountSettings.spec.ts
+│   │
+│   └── security/               # Testes de segurança/acessibilidade
+│       └── restrictedAccess.spec.ts
+│
+├── pages/                      # Page Objects (abstração das páginas)
+│   ├── LoginPage.ts
+│   ├── HomePage.ts
+│   ├── SearchPage.ts
+│   ├── BookPage.ts
+│   ├── PlayerPage.ts
+│   └── AccountPage.ts
+│
+├── fixtures/                   # Reuso de setups (ex: login)
+│   ├── authFixture.ts
+│   └── dataFixture.ts
+│
+├── utils/                      # Funções auxiliares
+│   ├── helpers.ts
+│   └── constants.ts
+│
+├── playwright.config.ts        # Configuração global
+└── package.json
