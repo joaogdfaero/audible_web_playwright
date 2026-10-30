@@ -45,8 +45,6 @@ The suite covers the real user journeys that matter most in a production e-comme
 | 🎧 Player | Open the web player from the library | `tests/player/player.spec.ts` |
 | 🎧 Player | Open the web player from the PDP | `tests/player/player.spec.ts` |
 
-Work in progress (written but disabled): *remove book from listen history* and *change site language (EN ⇄ ES)*, in `tests/account/`.
-
 The full backlog of planned scenarios (sign-up, password recovery, filters, subscriptions, accessibility, cross-browser…) is in [`docs/test_scenarios.txt`](docs/test_scenarios.txt).
 
 **Every test cleans up after itself.** Whatever is added to the wish list, cart or library is removed at the end, so the account stays in the same state and the suite can run again and again.
@@ -265,8 +263,6 @@ I built this project to practice and show production-grade test automation on a 
 - **CI/CD**: GitHub Actions pipelines for regression and for reproducing flaky tests.
 - **AI in QA**: hands-on experience with Playwright Test Agents and the Playwright MCP server for AI-assisted test planning, generation and healing.
 - **Security awareness**: credentials handled with environment variables and secrets, and masked logs.
-
-I am **open to QA / SDET / Test Automation opportunities**, including remote work for international teams.
 
 📫 **Get in touch:**
 
